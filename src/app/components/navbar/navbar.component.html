@@ -1,7 +1,6 @@
-<mat-toolbar color="primary">
-    <span>Athendat Test</span>
-    <span class="spacer"></span>
-    <button mat-button>Productos por Revisar</button>
-    <button mat-button>Productos Revisados</button>
-    <button mat-button>Todos</button>
-  </mat-toolbar>
+<mat-toolbar class="transparent-toolbar center-toolbar">
+  <mat-button-toggle-group name="status-bar" aria-label="Status bar" [(value)]="selectedOption" (change)="onToggleChange($event)">
+    <mat-button-toggle class="flat-toggle" value="pending">Pendientes</mat-button-toggle>
+    <mat-button-toggle class="flat-toggle" value="reviewed">Revisados</mat-button-toggle>
+  </mat-button-toggle-group>
+</mat-toolbar>

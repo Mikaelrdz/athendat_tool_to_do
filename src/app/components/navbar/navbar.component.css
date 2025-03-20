@@ -1,3 +1,14 @@
-.spacer {
-    flex: 1 1 auto;
-  }
+.transparent-toolbar {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.center-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-toolbar button {
+  margin: 0 1ch;
+}

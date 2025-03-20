@@ -1,0 +1,46 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+  width: 280px;
+}
+
+mat-card-content {
+    flex-grow: 1;
+}
+
+mat-card-actions {
+    margin-top: auto;
+}
+
+.delete-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+mat-button-toggle.approve.mat-button-toggle-checked {
+  background-color: #c2ffc2;
+}
+
+mat-button-toggle.disapprove.mat-button-toggle-checked {
+  background-color: #ffc2c2;
+}
+
+mat-card-actions {
+    justify-content: center;
+}
+
+@media (max-width: 700px) {
+  .card {
+    width: 100%;
+  }
+}
