@@ -1,34 +1,73 @@
 <div class="card-container">
+  <mat-menu #details="matMenu">
+    <ng-template matMenuContent let-desc="desc">
+      <div class="d-menu">
+        <mat-label class="d-label">Detalles</mat-label>
+        <mat-divider></mat-divider>
+        <table class="d-content">
+          <tr>
+            <td class="th">Descripción:</td>
+            <td>{{ desc }}</td>
+          </tr>
+        </table>
+      </div>
+    </ng-template>
+  </mat-menu>
+  <div class="paginator top-paginator">
+    <mat-paginator [hidePageSize]="true" [length]="products().length" [pageSize]="10" [pageIndex]="startIndex" (page)="onPageChange($event)"></mat-paginator>
+    <button mat-flat-button (click)="saveChanges()" matTooltip="Guardar cambios en los productos aprobados y desaprobados.">Guardar cambios</button>
+  </div>
+  <mat-divider class="container-divider"></mat-divider>
+  
   <mat-card
-    *ngFor="let p of products.slice(0, 10)"
+    *ngFor="let p of products().slice(startIndex*10, (startIndex+1)*10); trackBy: trackByFn"
     class="card mat-elevation-z4"
     appearance="outlined"
   >
-    <button mat-icon-button class="delete-button" (click)="deleteProduct(p.id)">
+    <button mat-icon-button class="delete-button" (click)="openDeleteDialog(p)" matTooltip="Eliminar producto">
         <mat-icon>delete</mat-icon>
     </button>
     <img mat-card-image src="{{ p.image }}" alt="Foto de {{ p.name }}" />
-    <mat-card-content>
+    <mat-card-header>
       <mat-card-title>{{ p.name }}</mat-card-title>
-      <p>
-        {{ p.description }}
-      </p>
+    </mat-card-header>
+    <mat-card-content>
+      <p>US${{p.price}}</p>
+      <button mat-stroked-button [matMenuTriggerFor]="details" [matMenuTriggerData]="{desc: p.description}">
+        Ver detalles
+        <mat-icon >info</mat-icon>
+      </button>
     </mat-card-content>
     <mat-card-actions>
       <mat-button-toggle-group
         hideSingleSelectionIndicator="true"
         name="accept-toggle"
         aria-label="Accept Toggle"
+        [(ngModel)]="p.status"
       >
-        <mat-button-toggle class="approve" value="approve">
-          <mat-icon>check</mat-icon>
+        <mat-button-toggle class="approve" value="Aprobado">
+          <!-- <mat-icon>check</mat-icon> -->
           Aprobado
         </mat-button-toggle>
-        <mat-button-toggle class="disapprove" value="disapprove">
-          <mat-icon>close</mat-icon>
-          Desaprobado
+        <!-- <button mat-icon-button><mat-icon>cancel</mat-icon></button> -->
+        <mat-button-toggle class="disapprove" value="Desaprobado">
+          <!-- <mat-icon>close</mat-icon> -->
+           Desaprobado
+          
         </mat-button-toggle>
+        <mat-button-toggle *ngIf="p.status !== 'Pendiente'" class="pending" value="Pendiente" matTooltip="Eliminar selección">
+          <mat-icon>close</mat-icon>
+        </mat-button-toggle>
+        
       </mat-button-toggle-group>
+      
     </mat-card-actions>
   </mat-card>
+  
+    <mat-divider class="container-divider"></mat-divider>
+  <div class="paginator">
+    <mat-paginator [hidePageSize]="true" [length]="products().length" [pageSize]="10" [pageIndex]="startIndex" (page)="onPageChange($event)"></mat-paginator>
+    <button mat-flat-button (click)="saveChanges()" matTooltip="Guardar cambios en los productos aprobados y desaprobados.">Guardar cambios</button>
+  </div>
+  
 </div>

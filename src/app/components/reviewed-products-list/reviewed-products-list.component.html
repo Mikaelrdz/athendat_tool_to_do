@@ -1,1 +1,39 @@
-<p>reviewed-products-list works!</p>
+<div class="card-container">
+  <div class="paginator top-paginator">
+    <!-- <mat-paginator [hidePageSize]="true" [length]="products().length" [pageSize]="10" (page)="onPageChange($event)"></mat-paginator> -->
+    <!-- <button mat-flat-button (click)="saveChanges()" matTooltip="Guardar cambios en los productos aprobados y desaprobados.">Guardar cambios</button> -->
+  </div>
+  <mat-divider class="container-divider"></mat-divider>
+  <cdk-virtual-scroll-viewport itemSize="300" class="scroll-viewport" (scrolledIndexChange)="loadMoreProducts()">
+  <mat-card
+  *cdkVirtualFor="let p of products()"
+    class="card mat-elevation-z4"
+    appearance="outlined"
+  >
+    <button mat-icon-button class="delete-button"  matTooltip="Eliminar producto">
+        <mat-icon>delete</mat-icon>
+    </button>
+    
+    <mat-card-header>
+      <img mat-card-image src="{{ p.image }}" alt="Foto de {{ p.name }}" />
+    </mat-card-header>
+    <mat-card-content>
+      <mat-card-title>{{ p.name }}</mat-card-title>
+      <mat-card-subtitle>{{p.description}}</mat-card-subtitle>
+      <div>
+        Estado:
+        <span *ngIf="p.status == 'Aprobado'" style="color: green;">Aprobado</span>
+        <span *ngIf="p.status == 'Desaprobado'" style="color: red;">Desaprobado</span>
+      </div>
+      <p>US${{p.price}}</p>
+    </mat-card-content>
+  </mat-card>
+</cdk-virtual-scroll-viewport>
+  
+    <mat-divider class="container-divider"></mat-divider>
+  <div class="paginator">
+    <!-- <mat-paginator [hidePageSize]="true" [length]="products().length" [pageSize]="7" (page)="onPageChange($event)"></mat-paginator> -->
+    <!-- <button mat-flat-button (click)="saveChanges()" matTooltip="Guardar cambios en los productos aprobados y desaprobados.">Guardar cambios</button> -->
+  </div>
+  
+</div>

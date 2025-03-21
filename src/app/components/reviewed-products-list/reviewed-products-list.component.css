@@ -1,0 +1,127 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.scroll-viewport {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; 
+  padding: 16px;
+  align-items: stretch;
+  justify-content: center;
+  max-width: 100%;
+  height: 70vh;
+  width: 100%;
+}
+
+.card {
+  font-family: Roboto;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  overflow: hidden;
+  padding: 16px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.card img {
+    max-height: 180px;
+}
+
+.card mat-card-header {
+    padding: 0;
+    
+}
+.card mat-card-content {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+}
+
+.d-label {
+  margin-top: 5px;
+  margin-left: 5px;
+  font-size: 16px;
+}
+
+.d-content {
+  font-size: 14px;
+  margin: 5px;
+  text-align: justify;
+}
+
+.d-content td {
+  vertical-align: top;
+}
+
+.d-content .th {
+  font-weight: bold;
+}
+
+.paginator {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 2%;
+  align-items: center;
+}
+
+.top-paginator {
+  width: fit-content;
+  position: absolute;
+  top: 30px;
+  right: 1ch;
+}
+
+mat-paginator {
+  background-color: transparent;
+  font-size: 14px;
+}
+
+.container-divider {
+  width: 100%;
+  height: 2px;
+}
+
+mat-card-header {
+  flex-grow: 1;
+}
+
+mat-card-title {
+  font-size: 18px;
+}
+
+mat-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-card-actions {
+  margin-top: auto;
+}
+
+.delete-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+mat-button-toggle.approve.mat-button-toggle-checked {
+  background-color: #c2ffc2;
+}
+
+mat-button-toggle.disapprove.mat-button-toggle-checked {
+  background-color: #ffc2c2;
+}
+
+mat-card-actions {
+  justify-content: center;
+}
